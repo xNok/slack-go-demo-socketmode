@@ -1,0 +1,60 @@
+{
+	"title": {
+		"type": "plain_text",
+		"text": "Create a stickie note",
+		"emoji": true
+	},
+	"submit": {
+		"type": "plain_text",
+		"text": "Create",
+		"emoji": true
+	},
+	"type": "modal",
+	"blocks": [
+		{
+			"type": "input",
+			"block_id": "note_description",
+			"element": {
+				"type": "plain_text_input",
+				"action_id": "content",
+				"placeholder": {
+					"type": "plain_text",
+					"text": "Take a note... "
+				},
+				"multiline": true
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Note"
+			}
+		},
+		{
+			"type": "input",
+			"block_id": "note_color",
+			"element": {
+				"type": "static_select",
+				"action_id": "color",
+				"options": [
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "yellow"
+						},
+						"value": "yellow"
+					},
+					{
+						"text": {
+							"type": "plain_text",
+							"text": "blue"
+						},
+						"value": "blue"
+					}
+				]
+			},
+			"label": {
+				"type": "plain_text",
+				"text": "Color"
+			}
+		}
+	]
+}

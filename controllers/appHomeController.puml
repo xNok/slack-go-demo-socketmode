@@ -1,0 +1,30 @@
+@startuml
+actor USER as U 
+participant APP as A
+participant SLACK as S
+
+== App Home ==
+autonumber
+
+U -> S: Opens App Home Open
+S -> A ++ #DarkSalmon: `app_home_opened` event triggered
+A -> S --: `views.publish`
+S -> U: Display The View in App Home
+
+== Create Stickie note Triggered ==
+autonumber 11
+
+U -> S: Click button `Create Stickie note`
+S -> A ++ #DarkSalmon: `Actions` interaction is triggered
+A -> S --: `views.open`
+S -> U: Opens modal
+
+== Create Stickie note Submited ==
+autonumber 21
+
+U -> S: Submit modal `Create a stickie note`
+S -> A ++ #DarkSalmon: `DialogSubmission` interaction is triggered
+A -> S --: `views.publish`
+S -> U: Update App Home
+
+@enduml

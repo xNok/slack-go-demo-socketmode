@@ -1,0 +1,29 @@
+{
+	"type": "home",
+	"blocks": [
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "mrkdwn",
+					"text": "{{ .Timestamp }}"
+				}
+			]
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "{{ .Description }}"
+			},
+			"accessory": {
+				"type": "image",
+				"image_url": "https://cdn.glitch.com/0d5619da-dfb3-451b-9255-5560cd0da50b%2Fstickie_{{ .Color }}.png",
+				"alt_text": "{{ .Color }} stickie note"
+			}
+		},
+		{
+			"type": "divider"
+		}
+	]
+}

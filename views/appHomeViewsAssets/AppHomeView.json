@@ -1,0 +1,23 @@
+{
+	"type": "home",
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Welcome Back!* \nThis is a home for Stickers app. You can add small notes here!"
+			},
+			"accessory": {
+				"type": "button",
+				"action_id": "add_note",
+				"text": {
+					"type": "plain_text",
+					"text": "Add a Stickie"
+				}
+			}
+		},
+		{
+			"type": "divider"
+		}
+	]
+}
