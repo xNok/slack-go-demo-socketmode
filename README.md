@@ -1,4 +1,4 @@
-# Demos the use of socketmode to build slackBots using go
+# Building Slack Bots using socketmode and go
 
 * Article 1: [Building a home for your app 🏡, Revisited in Go](./docs/building_a_home.md)
 
