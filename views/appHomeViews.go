@@ -28,11 +28,11 @@ type StickieNote struct {
 }
 
 //go:embed appHomeViewsAssets/*
-var assets embed.FS
+var appHomeAssets embed.FS
 
 func AppHomeTabView() slack.HomeTabViewRequest {
 
-	str, err := assets.ReadFile("appHomeViewsAssets/AppHomeView.json")
+	str, err := appHomeAssets.ReadFile("appHomeViewsAssets/AppHomeView.json")
 	if err != nil {
 		log.Printf("Unable to read view `AppHomeView`: %v", err)
 	}
@@ -44,7 +44,7 @@ func AppHomeTabView() slack.HomeTabViewRequest {
 
 func CreateStickieNoteModal() slack.ModalViewRequest {
 
-	str, err := assets.ReadFile("appHomeViewsAssets/CreateStickieNoteModal.json")
+	str, err := appHomeAssets.ReadFile("appHomeViewsAssets/CreateStickieNoteModal.json")
 	if err != nil {
 		log.Printf("Unable to read view `CreateStickieNoteModal`: %v", err)
 	}
@@ -57,7 +57,7 @@ func CreateStickieNoteModal() slack.ModalViewRequest {
 func AppHomeCreateStickieNote(note StickieNote) slack.HomeTabViewRequest {
 
 	// Base elements
-	str, err := assets.ReadFile("appHomeViewsAssets/AppHomeView.json")
+	str, err := appHomeAssets.ReadFile("appHomeViewsAssets/AppHomeView.json")
 	if err != nil {
 		log.Printf("Unable to read view `AppHomeView`: %v", err)
 	}
@@ -65,7 +65,7 @@ func AppHomeCreateStickieNote(note StickieNote) slack.HomeTabViewRequest {
 	json.Unmarshal(str, &view)
 
 	// New Notes
-	t, err := template.ParseFS(assets, "appHomeViewsAssets/NoteBlock.json")
+	t, err := template.ParseFS(appHomeAssets, "appHomeViewsAssets/NoteBlock.json")
 	if err != nil {
 		panic(err)
 	}
