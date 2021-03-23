@@ -1,10 +1,8 @@
 package views
 
 import (
-	"bytes"
 	"embed"
 	"encoding/json"
-	"html/template"
 	"io/ioutil"
 
 	"github.com/slack-go/slack"
@@ -15,27 +13,20 @@ var greetingAssets embed.FS
 
 func GreetingMessage(user string) []slack.Block {
 
-	// read the block-kit definition as a go template
-	t, err := template.ParseFS(greetingAssets, "greetingViews/greeting.json")
-	if err != nil {
-		panic(err)
-	}
-	var tpl bytes.Buffer
-
 	// we need a stuct to hold template arguments
 	type args struct {
 		User string
 	}
 
-	err = t.Execute(&tpl, args{User: user})
-	if err != nil {
-		panic(err)
-	}
+	tpl := renderTemplate(greetingAssets, "greetingViews/greeting.json", args{User: user})
 
+	// we convert the view into a message struct
 	view := slack.Msg{}
 
 	str, _ := ioutil.ReadAll(&tpl)
 	json.Unmarshal(str, &view)
 
+	// We only return the block because of the way the PostEphemeral function works
+	// we are going to use slack.MsgOptionBlocks in the controller
 	return view.Blocks.BlockSet
 }
