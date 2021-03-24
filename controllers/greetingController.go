@@ -32,7 +32,13 @@ func NewGreetingController(eventhandler *socketmode.SocketmodeHandler) GreetingC
 func (c *GreetingController) postGreetingMessage(evt *socketmode.Event, clt *socketmode.Client) {
 	// we need to cast our socketmode.Event into slackevents.AppHomeOpenedEvent
 	evt_api, _ := evt.Data.(slackevents.EventsAPIEvent)
-	evt_app_mention, _ := evt_api.InnerEvent.Data.(slackevents.AppMentionEvent)
+	evt_app_mention, ok := evt_api.InnerEvent.Data.(*slackevents.AppMentionEvent)
+
+	clt.Ack(*evt.Request)
+
+	if ok != true {
+		log.Printf("ERROR converting event to slackevents.AppMentionEvent: %v", ok)
+	}
 
 	userInfo, err := clt.GetApiClient().GetUserInfo(evt_app_mention.User)
 

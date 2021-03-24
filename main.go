@@ -33,6 +33,7 @@ func main() {
 	socketmodeHandler := socketmode.NewsSocketmodeHandler(client)
 
 	controllers.NewAppHomeController(socketmodeHandler)
+	controllers.NewGreetingController(socketmodeHandler)
 
 	socketmodeHandler.RunEventLoop()
 

@@ -5,3 +5,9 @@
 
 References:
 * [Building a home for your app 🏡](https://api.slack.com/tutorials/app-home-with-modal)
+
+## Show cases
+
+
+### Greetings (AppMentionEvent)
+![](./docs/assets/greeting.gif)
