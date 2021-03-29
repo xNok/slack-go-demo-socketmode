@@ -1,0 +1,12 @@
+@startuml
+
+autonumber
+
+Client     -> Server      : Event
+Server     -> Middleware  : Dispatch
+Middleware -> Handler     : Forward
+Handler    -> Middleware  : Return
+Middleware -> Server      : Return
+Server     -> Client      : Response
+
+@enduml
