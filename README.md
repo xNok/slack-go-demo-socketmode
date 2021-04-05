@@ -32,3 +32,5 @@ go run main.go
 
 ### Greetings (AppMentionEvent)
 ![](./docs/assets/greeting.gif)
+
+![](./out/controllers/greetingController/greetingController.png)
