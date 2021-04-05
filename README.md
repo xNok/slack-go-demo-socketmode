@@ -1,6 +1,6 @@
 # Building Slack Bots in Golang
 
-This project demonstrate how to build a Slackbot in Golang, it uses the [slack-go](https://github.com/slack-go/slack) library and communicates with slack using the [socket mode](https://api.slack.com/apis/connections/socket).
+This project demonstrates how to build a Slackbot in Golang; it uses the [slack-go](https://github.com/slack-go/slack) library and communicates with slack using the [socket mode](https://api.slack.com/apis/connections/socket).
 
 Working on this project inspired me to write a couple article that you can read here or on [Medium](https://medium.com/@couedeloalexandre)
 
