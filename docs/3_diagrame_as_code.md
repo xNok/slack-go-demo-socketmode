@@ -50,13 +50,17 @@ Create a PlantUML sequence diagram takes only a few minutes. Think about it next
 
 Furthermore, by having a clear picture in your mind, you can better identify internal versus external interaction. Therefore identify potential blockers and write more testable code. I would compare creating a diagram to writing a draft for a technical article. It only takes a fraction of your time and makes you better because it stimulates you creative and critical thinking.
 
-![]()
+This is an example I used in this repo:
+
+![](../out/controllers/greetingController/greetingController.png)
 
 ### Quick and flexible Diagrams - Draw.io
 
 No matter how powerful making a diagram as code can be, sometimes we need more freedom when creating or drafting our diagrams, almost like if needed a blackboard. Luckily we can still do this in VS Code and commit the result in our git history with Draw.io. the best of both worlds! Of course, the downside is that diagram might be less structured; well, you don't want our hands tight, so I believe that this is an excellent middle ground.
 
 I have been using [Draw.io](https://app.diagrams.net/) for many years. When I discovered a VS Code extension, I add to try it! It turns out pretty great! Your diagrams are still alongside the code, easy to open and edit in VS Code, and anyone else can always open them in the web viewer.
+
+![](./assets/mindmap.drawio.svg)
 
 
 ## References
