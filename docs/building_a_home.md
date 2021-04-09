@@ -74,7 +74,7 @@ Therefore I validate if the token exists and the beginning of the token to preve
 
 [Slack driver code](../drivers/slack.go)
 
-## Controllers > c.go
+## Controllers > appHomeController.go
 
 I create a [sequence diagrame](../controllers/appHomeController.puml), inspired by [Tomomi Imura's](https://api.slack.com/tutorials/app-home-with-modal#building-a-home-for-your-app---learn-how-to-create-the-app-home-view-and-use-the-modals__setting-up-your-app), to visually represent what we are about to code. I believe that it is convenient to keep such diagrams alongside my code. It should make it much easier to follow this tutorial. Besides, I added references to the diagram in my code as comments. 
 
