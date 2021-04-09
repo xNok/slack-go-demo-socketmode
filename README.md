@@ -8,6 +8,8 @@ Working on this project inspired me to write a couple of articles that you can r
 * Article 2 : [Handler and Middleware design pattern in Golang](./docs/2_middleware_design_pattern.md) - [Medium Version](https://medium.com/codex/handler-and-middleware-design-pattern-in-golang-de23ec452fce)
 * Article 3 : [Diagrams as code 3 must have tools](./docs/3_diagrame_as_code.md) - [Medium Version](https://medium.com/geekculture/3-diagram-as-code-tools-that-combined-cover-all-your-needs-8f40f57d5cd8)
 * Article 4: [Building a home for your app 🏡, Revisited in Go](./docs/building_a_home.md) - [Medium Version](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
+* WIP: Article 5: [Startup infra for small self-hosted project]()
+* WIP: Article 6: [You need a Dojo ⛪]()
 
 References:
 * [Building a home for your app 🏡](https://api.slack.com/tutorials/app-home-with-modal)
