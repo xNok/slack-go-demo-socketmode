@@ -8,7 +8,7 @@ import (
 	"github.com/slack-go/slack"
 )
 
-//go:embed greetingViews/*
+//go:embed greetingViewsAssets/*
 var greetingAssets embed.FS
 
 func GreetingMessage(user string) []slack.Block {
@@ -18,7 +18,7 @@ func GreetingMessage(user string) []slack.Block {
 		User string
 	}
 
-	tpl := renderTemplate(greetingAssets, "greetingViews/greeting.json", args{User: user})
+	tpl := renderTemplate(greetingAssets, "greetingViewsAssets/greeting.json", args{User: user})
 
 	// we convert the view into a message struct
 	view := slack.Msg{}

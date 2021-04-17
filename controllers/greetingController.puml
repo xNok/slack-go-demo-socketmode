@@ -3,10 +3,19 @@ actor USER as U
 participant APP as A
 participant SLACK as S
 
+== App Mentions ==
 autonumber
 
-U -> S: Post a messation with @my_app_names
+U -> S: Post a message with @my_app_names
 S -> A ++ #DarkSalmon: `app_mention` event triggered
+A -> S --: `chat.postEphemeral`
+S -> U: Display ephemeral message to a user in a channel
+
+== User Join Channel ==
+autonumber 11
+
+U -> S: User join a channel
+S -> A ++ #DarkSalmon: `member_joined_channel` event triggered
 A -> S --: `chat.postEphemeral`
 S -> U: Display ephemeral message to a user in a channel
 

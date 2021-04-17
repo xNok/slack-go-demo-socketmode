@@ -58,7 +58,7 @@ import (
 	"embed"
 )
 
-//go:embed greetingViews/*
+//go:embed greetingViewsAssets/*
 var greetingAssets embed.FS
 ```
 
