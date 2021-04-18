@@ -70,13 +70,13 @@ Then you can create the following project structure or refer to it as we progres
 
 ```
 + controllers
-`- greetingController.go
+|`- greetingController.go
 + drivers
-`- Slack.go
+|`- Slack.go
 + views
-`+ greetingViewsAssets
-  `- greeting.json
-`- greetingViews.go
+|`+ greetingViewsAssets
+| | `- greeting.json
+|`- greetingViews.go
 + main.go
 ```
 
