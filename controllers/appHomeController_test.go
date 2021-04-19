@@ -71,7 +71,9 @@ func TestAppHomeController_publishHomeTabView(t *testing.T) {
 
 // We can use that test to reset the App home for demos
 func TestAppHomeController_publishHomeTabView_Integration(t *testing.T) {
-
+	if testing.Short() {
+		t.Skip()
+	}
 	// Use an SLACK_BOT_TOKEN, SLACK_APP_TOKEN, TEST_USER to do our test
 	godotenv.Load("../test_slack.env")
 
