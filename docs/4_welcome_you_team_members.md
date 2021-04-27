@@ -246,6 +246,8 @@ func (c *GreetingController) postGreetingMessage(evt *socketmode.Event, clt *soc
 	//Handle errors
 	if err != nil {
 		log.Printf("ERROR postGreetingMessage: %v", err)
+	}
+}
 ```
 
 ## Tutorial Step 5: Create the View> greetingViews.go

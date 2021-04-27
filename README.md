@@ -4,14 +4,19 @@ This project demonstrates how to build a Slackbot in Golang; it uses the [slack-
 
 Working on this project inspired me to write a couple of articles that you can read here or on [Medium](https://medium.com/@couedeloalexandre)
 
+### Slack Bot Tutorials
+* Tutorial 1 : [Build Your Slack App Home in Golang Using Socket Mode](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
+
+* Tutorial 2 : [Properly Welcome Users in Slack with Golang using Socket Mode](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://levelup.gitconnected.com/properly-welcome-users-in-slack-with-golang-using-socket-mode-9a206d30a34a)
+
+* WIP: Tutorial 3: [Slash commands in Slack]()
+
+### Other topics
 * Article 1 : [Manage Static Assets in Golang](./docs/1_go_1_16_embeded.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://couedeloalexandre.medium.com/manage-static-assets-with-embed-golang-1-16-75c89c3eea39)
 * Article 2 : [Handler and Middleware design pattern in Golang](./docs/2_middleware_design_pattern.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/codex/handler-and-middleware-design-pattern-in-golang-de23ec452fce)
 * Article 3 : [Diagrams as code 3 must have tools](./docs/3_diagrame_as_code.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/geekculture/3-diagram-as-code-tools-that-combined-cover-all-your-needs-8f40f57d5cd8)
-* Article 4 : [Building a home for your app 🏡, Revisited in Go](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
-* WIP: Article 5: [You need a Dojo ⛪]()
+* WIP: Article 4: [You need a Dojo ⛪]()
 
-References:
-* [Building a home for your app 🏡](https://api.slack.com/tutorials/app-home-with-modal)
 
 ## Test the project
 
@@ -35,7 +40,7 @@ go run main.go
 
 ![](./out/controllers/greetingController/greetingController.png)
 
-* [Building a home for your app 🏡, Revisited in Go](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
+* [Master one-on-one interactions](./docs/4_welcome_you_team_members) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://levelup.gitconnected.com/properly-welcome-users-in-slack-with-golang-using-socket-mode-9a206d30a34a)
 
 ### App Home
 
@@ -44,3 +49,7 @@ go run main.go
 ![](./out/controllers/appHomeController/appHomeController.png)
 
 * [Building a home for your app 🏡, Revisited in Go](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
+
+
+## References
+* [Building a home for your app 🏡](https://api.slack.com/tutorials/app-home-with-modal)
