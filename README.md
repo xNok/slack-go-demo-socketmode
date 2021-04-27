@@ -1,5 +1,12 @@
 # Building Slack Bots in Golang
 
+<p>
+<a href="https://github.com/xNok/slack-go-demo-socketmode/actions/workflows/go.yml"><img src="https://github.com/xNok/slack-go-demo-socketmode/actions/workflows/go.yml/badge.svg" height=25></a>
+<a href="https://couedeloalexandre.medium.com/"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a> 
+<a href="https://dev.to/xnok"><img src="https://img.shields.io/badge/DEV.TO-%230A0A0A.svg?&style=for-the-badge&logo=dev-dot-to&logoColor=white" height=25></a>
+</p>
+
+
 This project demonstrates how to build a Slackbot in Golang; it uses the [slack-go](https://github.com/slack-go/slack) library and communicates with slack using the [socket mode](https://api.slack.com/apis/connections/socket).
 
 Working on this project inspired me to write a couple of articles that you can read here or on [Medium](https://medium.com/@couedeloalexandre)
