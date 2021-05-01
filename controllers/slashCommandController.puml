@@ -1,0 +1,13 @@
+@startuml
+actor USER as U 
+participant APP as A
+participant SLACK as S
+
+autonumber
+
+U -> S: Post a Slack Command
+S -> A ++ #DarkSalmon: `app_mention` event triggered
+A -> S --: `chat.postEphemeral`
+S -> U: Display ephemeral message to a user in a channel
+
+@enduml
