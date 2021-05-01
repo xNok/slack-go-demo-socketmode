@@ -12,6 +12,9 @@ This project demonstrates how to build a Slackbot in Golang; it uses the [slack-
 Working on this project inspired me to write a couple of articles that you can read here or on [Medium](https://medium.com/@couedeloalexandre)
 
 ### Slack Bot Tutorials
+
+* WIP: Tutorial 0 : [Every Slack Application starts with a few simple steps]()
+
 * Tutorial 1 : [Build Your Slack App Home in Golang Using Socket Mode](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31)
 
 * Tutorial 2 : [Properly Welcome Users in Slack with Golang using Socket Mode](./docs/building_a_home.md) - [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://levelup.gitconnected.com/properly-welcome-users-in-slack-with-golang-using-socket-mode-9a206d30a34a)
