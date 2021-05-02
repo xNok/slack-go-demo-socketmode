@@ -1,5 +1,9 @@
 ## Welcome Members in Slack with Golang using Slack Socket Mode
 
+<p>
+<a href="https://levelup.gitconnected.com/properly-welcome-users-in-slack-with-golang-using-socket-mode-9a206d30a34a?sk=24fb8c44c1128cc3ef366d51d4a48812"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
+</p>
+
 When creating a Slack Application to increase engagement, it is essential to start small meaningful one-on-one interaction. For instance, you can send a short tutorial on how to your App in the Slack [App Home](https://api.slack.com/start/overview#app_home). You can also introduce the purpose and rules of a channel whenever a user joins, with a message only he can see as not to pollute other members.
 
 I want this article to help you understand some core features of Slack Applications. Before moving on into coding, let me showcase two use cases and explain Slack's terminology. With this base setup, you will be able to create much more exciting interactions with your users. I consider those as the basis of any Slack application.

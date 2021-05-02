@@ -1,5 +1,9 @@
 # Manage Static Assets with `embed` (Golang 1.16)
 
+<p>
+<a href="https://couedeloalexandre.medium.com/manage-static-assets-with-embed-golang-1-16-75c89c3eea39?sk=d903d7b0532aff64243ef419346f804b"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
+</p>
+
 ## Overview
 
 Golang 1.16 new package `embed` helps you manage static assets, embedding them in the application binary and making them easy to use. Any files from a package or package subdirectory can be embedded and retrieved as a variable of type `string` or `bytes[]`.

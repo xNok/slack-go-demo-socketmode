@@ -1,5 +1,9 @@
 # Handler and Middleware design pattern in Golang
 
+<p>
+<a href="https://medium.com/codex/handler-and-middleware-design-pattern-in-golang-de23ec452fce?sk=0eed25a60858ad985ad22274505fb992"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
+</p>
+
 I recently started working on a SlackBot project of my own using *Golang*. As any good coder would, I went on a quest for a library that would simplify my day and let me take advantage of what other community members have come up with to solve similar problems.
 
 I came across the well-maintained [slack-go](https://github.com/slack-go/slack) library; I started coding my bot using the provided example. Everything worked fine; The code is producing the expected result. It is time to make another coffee and implements a few extra features.

@@ -1,5 +1,9 @@
 # How using diagrams as code will make you a better developer
 
+<p>
+<a href="https://medium.com/geekculture/3-diagram-as-code-tools-that-combined-cover-all-your-needs-8f40f57d5cd8?sk=52fe49e20d7b3a37123d07b29b102696"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
+</p>
+
 The ability to create **meaningful diagrams** is the pinnacle of communication skills for any Engineer. Forget your boring presentations or lengthy documentation. `One diagram is worth 1000 words`. So take the time to create a representation of what needs to be done: infrastructure diagrams, UML diagrams, mindmap, and others. On top of that, **do it as code**; We are in the era of everything as code, after all! 
 
 Without a surprise, there are some delightful tools out there to do just that as code. So let me introduce to you **three tools** that combined will let you create all the diagrams you need; Two of which have VS Code extension.

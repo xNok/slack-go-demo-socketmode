@@ -1,5 +1,11 @@
 # Create Slack App Home in Golang using Slack Socket Mode
 
+<p>
+<a href="https://betterprogramming.pub/build-a-slack-app-home-in-golang-using-socket-mode-aff7b855bb31?sk=b8b1f7f3c03972793b26bec02dc3d2cc"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a> 
+<a href="https://dev.to/xnok/build-your-slack-app-home-in-golang-using-socket-mode-4o5e"><img src="https://img.shields.io/badge/DEV.TO-%230A0A0A.svg?&style=for-the-badge&logo=dev-dot-to&logoColor=white" height=25></a>
+</p>
+
+
 This tutorial feature implementing an [App Home](https://api.slack.com/start/overview#app_home) in Golang with the [slack-go](https://github.com/slack-go/slack) library and using [Slack Socket Mode](https://api.slack.com/apis/connections/socket). It is inspired by this [article](https://api.slack.com/tutorials/app-home-with-modal) in the slack documentation.
 
 > What is an App home?
