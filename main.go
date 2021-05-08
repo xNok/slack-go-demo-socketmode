@@ -34,6 +34,7 @@ func main() {
 
 	controllers.NewAppHomeController(socketmodeHandler)
 	controllers.NewGreetingController(socketmodeHandler)
+	controllers.NewSlashCommandController(socketmodeHandler)
 
 	socketmodeHandler.RunEventLoop()
 

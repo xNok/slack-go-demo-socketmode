@@ -61,6 +61,10 @@ Slash commands are composed of two elements. For instance when you type `/rocket
 The command will help you dispatch the user request to the right place and you will ne to parse the text to make sense of what the user want. If you write a more conventional command line interface you may expect `key=value` arguments.
 
 
+### Callback url (up to 5 reply in 30 min)
+
+### How to properly reply to slash commands
+
 ## References
 
 * https://api.slack.com/interactivity/slash-commands
