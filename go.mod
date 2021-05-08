@@ -11,4 +11,4 @@ require (
 	github.com/slack-go/slack v0.8.1
 )
 
-replace github.com/slack-go/slack => github.com/xnok/slack v0.8.1-0.20210415015007-5ceeab881540
+replace github.com/slack-go/slack => github.com/xnok/slack v0.8.1-0.20210508190532-e8ecf5e06819

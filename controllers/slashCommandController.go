@@ -15,6 +15,16 @@ func NewSlashCommandController(eventhandler *socketmode.SocketmodeHandler) Slash
 		EventHandler: eventhandler,
 	}
 
+	// Register callback for the command /rocket
+	c.EventHandler.HandleSlashCommand(
+		"/rocket",
+		c.launchRocket,
+	)
+
 	return c
+
+}
+
+func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketmode.Client) {
 
 }
