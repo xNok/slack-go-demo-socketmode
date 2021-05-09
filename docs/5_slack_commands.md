@@ -63,6 +63,18 @@ The command will help you dispatch the user request to the right place and you w
 
 ### Callback url (up to 5 reply in 30 min)
 
+When using the response URL you have two option:
+* Respond to the channel so everyone can see the Bot's response `slack.ResponseTypeInChannel`
+* Respond with ephemeral message and only the user that triggered the command see it `slack.ResponseTypeEphemeral`
+
+```
+slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel)
+```
+
+Other options to considere when creating commands:
+* schedule a message (if your app creates some king of reminder)
+* Send the message in the App Home
+
 ### How to properly reply to slash commands
 
 ## References

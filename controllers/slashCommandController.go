@@ -40,19 +40,39 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 	// Make sure to respond to the server to avoid an error
 	clt.Ack(*evt.Request)
 
-	// create the view using block-kit
-	blocks := views.GreetingMessage("bob")
+	// parse the command line
+	count := 3
 
-	// Post greeting message (3) in User's App Home
-	// Pass a user's ID as the value of channel to post to that user's App Home
-	// We get the Api client from `clt`
-	_, _, err := clt.GetApiClient().PostMessage(
+	// create the view using block-kit
+	blocks := views.LaunchRocket(count)
+
+	// Post reponse message (3) in User's App Home
+	_, ts, err := clt.GetApiClient().PostMessage(
 		command.ChannelID,
 		slack.MsgOptionBlocks(blocks...),
+		// slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
 	)
 
-	//Handle errors
+	// Handle errors
 	if err != nil {
 		log.Printf("ERROR while sending message for /rocket: %v", err)
 	}
+
+	for i := count; i > -1; i-- {
+		// create the view using block-kit
+		blocks = views.LaunchRocket(i)
+
+		_, _, _, err = clt.GetApiClient().UpdateMessage(
+			command.ChannelID,
+			ts,
+			slack.MsgOptionBlocks(blocks...),
+			// slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
+		)
+
+		// Handle errors
+		if err != nil {
+			log.Printf("ERROR while sending message for /rocket: %v", err)
+		}
+	}
+
 }
