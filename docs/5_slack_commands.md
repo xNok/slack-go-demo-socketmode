@@ -68,3 +68,4 @@ The command will help you dispatch the user request to the right place and you w
 ## References
 
 * https://api.slack.com/interactivity/slash-commands
+* https://api.slack.com/legacy/interactive-messages
