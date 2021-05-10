@@ -46,11 +46,13 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 	// create the view using block-kit
 	blocks := views.LaunchRocket(count)
 
+	client := clt.GetApiClient()
+
 	// Post reponse message (3) in User's App Home
-	_, ts, err := clt.GetApiClient().PostMessage(
+	_, ts, err := client.PostMessage(
 		command.ChannelID,
 		slack.MsgOptionBlocks(blocks...),
-		// slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
+		slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
 	)
 
 	// Handle errors
@@ -58,7 +60,7 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 		log.Printf("ERROR while sending message for /rocket: %v", err)
 	}
 
-	for i := count; i > -1; i-- {
+	for i := count; i >= 0; i-- {
 		// create the view using block-kit
 		blocks = views.LaunchRocket(i)
 
@@ -66,7 +68,8 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 			command.ChannelID,
 			ts,
 			slack.MsgOptionBlocks(blocks...),
-			// slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
+			slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
+			slack.MsgOptionReplaceOriginal(command.ResponseURL),
 		)
 
 		// Handle errors

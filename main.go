@@ -32,8 +32,13 @@ func main() {
 	// Inject Deps in router
 	socketmodeHandler := socketmode.NewsSocketmodeHandler(client)
 
+	// This if for Separate articles and demos. You can run there separatly or all together
+
+	// Build a Slack App Home in Golang Using Socket Mode
 	controllers.NewAppHomeController(socketmodeHandler)
+	// Properly Welcome Users in Slack with Golang using Socket Mode
 	controllers.NewGreetingController(socketmodeHandler)
+	// Build Slack Slash Command in Golang Using Socket Mode
 	controllers.NewSlashCommandController(socketmodeHandler)
 
 	socketmodeHandler.RunEventLoop()
