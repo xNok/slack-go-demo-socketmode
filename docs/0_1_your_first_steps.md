@@ -1,5 +1,11 @@
 # Your first Steps creating a Slack Application in Golang
 
+<p>
+<span>Published version:</span>
+<a href="https://medium.com/geekculture/build-slack-application-in-golang-using-socket-mode-setting-up-57f454e63c0a?sk=03196a8c492a76cd7ef9a73628fe4524"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
+</p>
+
+
 ## Tutorial Step 1: Configure your Application
 
 Create a [new Application](https://api.slack.com/apps). Please give it a cool name.
