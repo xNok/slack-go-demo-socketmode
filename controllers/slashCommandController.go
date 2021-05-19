@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"log"
+	"time"
 	"xnok/slack-go-demo/views"
 
 	"github.com/slack-go/slack"
@@ -22,6 +23,12 @@ func NewSlashCommandController(eventhandler *socketmode.SocketmodeHandler) Slash
 	// Register callback for the command /rocket
 	c.EventHandler.HandleSlashCommand(
 		"/rocket",
+		c.launchRocketAnnoncement,
+	)
+
+	// The rocket launch is approved
+	c.EventHandler.HandleInteractionBlockAction(
+		views.RocketAnnoncementActionID,
 		c.launchRocket,
 	)
 
@@ -29,7 +36,7 @@ func NewSlashCommandController(eventhandler *socketmode.SocketmodeHandler) Slash
 
 }
 
-func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketmode.Client) {
+func (c SlashCommandController) launchRocketAnnoncement(evt *socketmode.Event, clt *socketmode.Client) {
 	// we need to cast our socketmode.Event into a Slash Command
 	command, ok := evt.Data.(slack.SlashCommand)
 
@@ -44,15 +51,15 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 	count := 3
 
 	// create the view using block-kit
-	blocks := views.LaunchRocket(count)
+	blocks := views.LaunchRocketAnnoncement(count)
 
 	client := clt.GetApiClient()
 
-	// Post reponse message (3) in User's App Home
-	_, ts, err := client.PostMessage(
+	// Post ephemeral message
+	_, _, err := client.PostMessage(
 		command.ChannelID,
 		slack.MsgOptionBlocks(blocks...),
-		slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
+		slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeEphemeral),
 	)
 
 	// Handle errors
@@ -60,16 +67,29 @@ func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketm
 		log.Printf("ERROR while sending message for /rocket: %v", err)
 	}
 
+}
+
+func (c SlashCommandController) launchRocket(evt *socketmode.Event, clt *socketmode.Client) {
+	// we need to cast our socketmode.Event into a Slash Command
+	interaction := evt.Data.(slack.InteractionCallback)
+
+	// Make sure to respond to the server to avoid an error
+	clt.Ack(*evt.Request)
+
+	// parse the command line
+	count := 3
+
 	for i := count; i >= 0; i-- {
 		// create the view using block-kit
-		blocks = views.LaunchRocket(i)
+		blocks := views.LaunchRocket(i)
 
-		_, _, _, err = clt.GetApiClient().UpdateMessage(
-			command.ChannelID,
-			ts,
+		time.Sleep(1000 * time.Millisecond)
+
+		_, _, err := clt.GetApiClient().PostMessage(
+			interaction.Container.ChannelID,
 			slack.MsgOptionBlocks(blocks...),
-			slack.MsgOptionResponseURL(command.ResponseURL, slack.ResponseTypeInChannel),
-			slack.MsgOptionReplaceOriginal(command.ResponseURL),
+			slack.MsgOptionResponseURL(interaction.ResponseURL, slack.ResponseTypeInChannel),
+			slack.MsgOptionReplaceOriginal(interaction.ResponseURL),
 		)
 
 		// Handle errors

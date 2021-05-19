@@ -8,16 +8,30 @@ import (
 	"github.com/slack-go/slack"
 )
 
+const (
+	// Define Action_id as constant so we can refet to them in the controller
+	RocketAnnoncementActionID = "rocket_launch_approved"
+	RocketAnnoncementBlockID  = "rocket_annoncement"
+)
+
 //go:embed slackCommandAssets/*
 var slashCommandAssets embed.FS
 
 func LaunchRocketAnnoncement(number int) []slack.Block {
 	// we need a stuct to hold template arguments
 	type args struct {
-		Number int
+		Number   int
+		ActionID string
+		BlockID  string
 	}
 
-	tpl := renderTemplate(slashCommandAssets, "slackCommandAssets/annnoncement.json", args{Number: number})
+	my_args := args{
+		Number:   number,
+		ActionID: RocketAnnoncementActionID,
+		BlockID:  RocketAnnoncementBlockID,
+	}
+
+	tpl := renderTemplate(slashCommandAssets, "slackCommandAssets/annnoncement.json", my_args)
 
 	// we convert the view into a message struct
 	view := slack.Msg{}

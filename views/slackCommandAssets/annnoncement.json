@@ -31,7 +31,8 @@
 						"text": "Approve"
 					},
 					"style": "primary",
-					"value": "click_me_123"
+					"action_id": "{{ .ActionID }}",
+					"value": "{{ .ActionID }}"
 				},
 				{
 					"type": "button",
@@ -41,7 +42,7 @@
 						"text": "Deny"
 					},
 					"style": "danger",
-					"value": "click_me_123"
+					"value": "rocket_launch_rejected"
 				}
 			]
 		}
