@@ -1,0 +1,50 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*You are about to launch a new rocket*"
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Rocket:*\nFalcon 9"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*When:*\n{{ .Number }}s count down"
+				}
+			]
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"emoji": true,
+						"text": "Approve"
+					},
+					"style": "primary",
+					"action_id": "{{ .ActionID }}",
+					"value": "{{ .ActionID }}"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"emoji": true,
+						"text": "Deny"
+					},
+					"style": "danger",
+					"value": "rocket_launch_rejected"
+				}
+			]
+		}
+	]
+}

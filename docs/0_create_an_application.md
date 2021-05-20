@@ -37,11 +37,11 @@ You can find inspiration [here](https://app.slack.com/block-kit-builder/T0B5XJYR
 
 You can check the list of API methods [here](https://api.slack.com/methods). There is more than a hundred. I hope the rest of this article helps you filter them out to Start Building your App and leverage Slack Application to their full potential.
 
-## Register for events (Event API)
+## Subscribe to Events (Event API)
 
 Now that you can send a message and using the API, you may wonder. How do I make my application more interactive? The answer is simply to listen to your customers!
 
-Like the Web API, before doing anything, you need first to activate the Event API and subscribe to event you want to receive (aka. when do you want Slack to call you).
+Like the Web API, before doing anything, you need first to activate the Event API and subscribe to an event you want to receive (aka. when do you want Slack to call you).
 
 Let say you want to send a greeting message whenever a new member joins a specific channel. Then you need to listen to `member_joined_channel` event. Everytime you register for an event refer yourself to the documentation as you may need to add aditionnal scope to your application. For Instance [member_joined_channel documentation](https://api.slack.com/events/member_joined_channel)
 
@@ -77,11 +77,13 @@ You may be familiar with Slack Built in commandes. If not go to any conversation
 
 ## Manage Interactive messages
 
-Slack lets add interactive component to your messages such as buttons, text fields, drop down menu, date picker and many more. To discover the full list of interactive components go back to [Block Kit](https://api.slack.com/block-kit) and pay a close look at the Action section.
+Slack let's add interactive components to your messages such as buttons, text fields, drop-down menu, date picker, and many more. Discover the complete list of interactive components go back to [Block Kit](https://api.slack.com/block-kit), and pay a close look at the Action section.
 
-It is important to notice that in Block Kit, if you interact with a component then you will find in the `Actions Preview` the expected payload that Slack would have sent you. You know exaclty what to expect on your end when a user interact with one of your messages
+It is crucial to notice in Block Kit that if you interact with a component, then you will find in the `Actions Preview` the expected payload that Slack would have sent you. You know exactly what to expect on your end when a user interacts with one of your messages
 
 ![](./assets/interaction.gif)
+
+When crafting an interactive message, you need to be extra cautious about `action_id` and `block_id`; they are a unique identifier that you will need to distinguish user interaction with your messages respectively and dynamically modify a message, respectively. I advise you to carefully manage those two elements in your application.
 
 ## Interactive App Home
 

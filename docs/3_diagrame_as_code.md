@@ -1,6 +1,7 @@
 # How using diagrams as code will make you a better developer
 
 <p>
+<span><b>Published version:</b></span>
 <a href="https://medium.com/geekculture/3-diagram-as-code-tools-that-combined-cover-all-your-needs-8f40f57d5cd8?sk=52fe49e20d7b3a37123d07b29b102696"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
 </p>
 

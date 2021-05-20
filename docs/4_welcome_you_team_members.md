@@ -1,6 +1,7 @@
 ## Welcome Members in Slack with Golang using Slack Socket Mode
 
 <p>
+<span><b>Published version:</b></span>
 <a href="https://levelup.gitconnected.com/properly-welcome-users-in-slack-with-golang-using-socket-mode-9a206d30a34a?sk=24fb8c44c1128cc3ef366d51d4a48812"><img src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" height=25></a>
 </p>
 
