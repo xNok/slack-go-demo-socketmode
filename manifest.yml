@@ -1,0 +1,41 @@
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: Test Socketmode
+features:
+  app_home:
+    home_tab_enabled: true
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  bot_user:
+    display_name: Test Socketmode
+    always_online: false
+  slash_commands:
+    - command: /rocket
+      description: Launches the rocket
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - channels:history
+      - chat:write
+      - links:read
+      - reactions:write
+      - users:read
+      - channels:read
+      - groups:read
+      - commands
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_home_opened
+      - app_mention
+      - member_joined_channel
+      - message.channels
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  is_hosted: false

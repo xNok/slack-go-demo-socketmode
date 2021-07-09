@@ -1,0 +1,22 @@
+@startuml
+actor USER as U 
+participant APP as A
+participant SLACK as S
+
+== Global Shortcut ==
+autonumber
+
+U -> S: Trigger Global Shortcut
+S -> A ++ #DarkSalmon: `app_home_opened` event triggered
+A -> S --: `views.publish`
+S -> U: Opens modal
+
+== Message Shortcut ==
+autonumber 11
+
+U -> S: Trigger Message Shortcut
+S -> A ++ #DarkSalmon: `Actions` interaction is triggered
+A -> S --: `views.open`
+S -> U: Opens modal
+
+@enduml

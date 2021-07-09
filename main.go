@@ -41,6 +41,8 @@ func main() {
 	// Build Slack Slash Command in Golang Using Socket Mode
 	controllers.NewSlashCommandController(socketmodeHandler)
 
+	controllers.NewShortcutController(socketmodeHandler)
+
 	socketmodeHandler.RunEventLoop()
 
 }
