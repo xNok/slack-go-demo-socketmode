@@ -1,7 +1,10 @@
 package controllers
 
 import (
+	"bytes"
+	"encoding/json"
 	"log"
+	"reflect"
 	"time"
 	"xnok/slack-go-demo/views"
 
@@ -19,6 +22,8 @@ func NewAppHomeController(eventhandler *socketmode.SocketmodeHandler) AppHomeCon
 	c := AppHomeController{
 		EventHandler: eventhandler,
 	}
+
+	c.EventHandler.Handle(socketmode.EventTypeErrorBadMessage, c.recoverAppHomeOpened)
 
 	// App Home (2)
 	c.EventHandler.HandleEventsAPI(
@@ -42,17 +47,96 @@ func NewAppHomeController(eventhandler *socketmode.SocketmodeHandler) AppHomeCon
 
 }
 
+// HomeEvent is a helper struct for recovery from err bad message
+type HomeEvent struct {
+	Envelope string          `json:"envelope_id"`
+	Payload  json.RawMessage `json:"payload"`
+}
+
+func (c *AppHomeController) recoverAppHomeOpened(evt *socketmode.Event, clt *socketmode.Client) {
+
+	log.Printf("Atempt to recover Bad Message %v", evt)
+
+	/*
+		We do some handling here to attempt to recover the event from a known issue with "AppHomeOpened"
+		If we fail to recover the assumption is that the bad event was for a legitimate reason and not
+		an internal issue with slack-go
+	*/
+	var e *socketmode.ErrorBadMessage
+	var ok bool
+	var err error
+
+	if e, ok = evt.Data.(*socketmode.ErrorBadMessage); !ok {
+		log.Printf("Bad Message Not Cast: %+v", evt)
+		return
+	}
+	var rawBytes []byte
+	if rawBytes, err = e.Message.MarshalJSON(); err != nil {
+		log.Printf("Bad Message Not Marshalled. Err: %+v\n Event: %+v", err, evt)
+		return
+	}
+
+	/*
+		This line replaces `"state":{"values":[]}` with `"state":{"values":{}}`
+		The latter is parsed correctly by slack-go while the former is what kicks off the "ErrorBadMessage"
+		event in the first place. It is, unfortunately, the best way to fix this behavior until there is
+		clarification from slack on intended return values and a fix is merged into slack-go
+	*/
+	rawMessage := bytes.Replace(rawBytes, []byte{34, 115, 116, 97, 116, 101, 34, 58, 123, 34, 118, 97, 108, 117, 101, 115, 34, 58, 91, 93, 125}, []byte{34, 115, 116, 97, 116, 101, 34, 58, 123, 34, 118, 97, 108, 117, 101, 115, 34, 58, 123, 125, 125}, 1)
+	var hE HomeEvent
+	if err := json.Unmarshal(rawMessage, &hE); err != nil {
+		log.Printf("Raw Message Not Marshalled: %s", err)
+		return
+	}
+
+	// Parse the raw json payload without verifying the token as it will fail otherwise
+	var newEvent slackevents.EventsAPIEvent
+	if newEvent, err = slackevents.ParseEvent(hE.Payload, slackevents.OptionNoVerifyToken()); err != nil {
+		log.Printf("Bad Message Not Parsed. Err: %+v\n Inner JSON: %+v", err, rawMessage)
+		return
+	}
+
+	// Plug all of our parts into an event
+	fabEvent := socketmode.Event{
+		Type: socketmode.EventTypeEventsAPI,
+		Data: newEvent,
+		Request: &socketmode.Request{ //  we need to attach the envelope ID for the request to Ack
+			Type:       "events_api",
+			EnvelopeID: hE.Envelope,
+		},
+	}
+
+	c.EventHandler.Client.Events <- fabEvent
+}
+
 func (c *AppHomeController) publishHomeTabView(evt *socketmode.Event, clt *socketmode.Client) {
 	// we need to cast our socketmode.Event into slackevents.AppHomeOpenedEvent
-	evt_api, _ := evt.Data.(slackevents.EventsAPIEvent)
-	evt_app_home_opened, _ := evt_api.InnerEvent.Data.(slackevents.AppHomeOpenedEvent)
+	evt_api, ok := evt.Data.(slackevents.EventsAPIEvent)
+
+	if ok != true {
+		log.Printf("ERROR converting event to slackevents.EventsAPIEvent")
+	}
+
+	evt_app_home_opened, ok := evt_api.InnerEvent.Data.(slackevents.AppHomeOpenedEvent)
+
+	var user string
+
+	if ok != true {
+		log.Printf("ERROR converting inner event to slackevents.AppHomeOpenedEvent")
+		//Patch the fact that we are not able to cast evt_api.InnerEvent.Data to AppHomeOpenedEvent
+		user = reflect.ValueOf(evt_api.InnerEvent.Data).Elem().FieldByName("User").Interface().(string)
+	} else {
+		user = evt_app_home_opened.User
+	}
+
+	log.Printf("ERROR publishHomeTabView: %v", evt_app_home_opened)
 
 	// create the view using block-kit
 	view := views.AppHomeTabView()
 
 	// Publish the view (3)
 	// We get the Api client from `clt` and post our view
-	_, err := clt.GetApiClient().PublishView(evt_app_home_opened.User, view, "")
+	_, err := clt.GetApiClient().PublishView(user, view, "")
 
 	//Handle errors
 	if err != nil {
@@ -77,7 +161,6 @@ func (c *AppHomeController) openCreateStickieNoteModal(evt *socketmode.Event, cl
 	if err != nil {
 		log.Printf("ERROR openCreateStickieNoteModal: %v", err)
 	}
-
 }
 
 func (c *AppHomeController) createStickieNote(evt *socketmode.Event, clt *socketmode.Client) {
